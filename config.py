@@ -17,7 +17,7 @@ ModelConfig = dict(
     scheduler=0.99
 )
 DataLoaderConfig = dict(
-    dataset="E:\\Research\\Datas\\AreialImage\\ArchaeologicalSitesDetection\\georgia_cleaned_all",
+    dataset="sample_data",
     transforms=Compose([
         # RandomCrop(512, 512),
         # OneOf([
