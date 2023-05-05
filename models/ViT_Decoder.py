@@ -47,7 +47,9 @@ class Decoder(nn.Module):
             )
             for i in range(depth)
         ]
+        print('needs_fc')
         if needs_fc:
+            print(embed_dim)
             self.fc1 = nn.Linear(embed_dim, embed_dim)
         num_patches = (img_size[0] // patch_size) * (img_size[1] // patch_size)
         self.pos_embed = nn.Parameter(torch.zeros(1, num_patches + 1, embed_dim))
@@ -88,7 +90,9 @@ class Decoder(nn.Module):
         return x
 
     def forward(self, x, linear=True):
+        print(x.shape)
         if self.needs_fc:
+            print('forward')
             x = self.fc1(x)
         x = x + self.interpolate_pos_encoding(x, self.img_size[1], self.img_size[0])
         x = self.norm_token(x)
